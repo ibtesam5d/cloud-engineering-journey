@@ -23,10 +23,10 @@ Daily commitment: 2-3 hours
 - how to install git through terminal
 - how to clone git repo using terminal
 - how to innstall python3 using terminal
-- Linux Quick refresh
-  -- linux essential commands like `pwd` `ls -la` `cd` `echo` `mkdir` and so on. Also writing on a text a file by using both `echo` and `touch` command.
-  -- Also, learned that using `echo` to write replaces existing text on the file. So, better use `nano` for adding contents next time.
-  -- system commands such as `df -h` for disk space, `free -h` to check memory usage, `ps aux` for running processes, and `history` to see all of the commands run by me/user.
+- Linux Quick refresh:
+  - linux essential commands like `pwd` `ls -la` `cd` `echo` `mkdir` and so on. Also writing on a text a file by using both `echo` and `touch` command.
+  - Also, learned that using `echo` to write replaces existing text on the file. So, better use `nano` for adding contents next time.
+  - system commands such as `df -h` for disk space, `free -h` to check memory usage, `ps aux` for running processes, and `history` to see all of the commands run by me/user.
 
 **What I built:**
 
