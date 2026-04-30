@@ -41,4 +41,7 @@ Daily commitment: 2-3 hours
 
 **Tomorrow:**
 
--
+- Deep dive into Linux file system structure (/home, /etc, /var, /usr)
+- Practice 30 essential Linux commands with real examples
+- Learn file permissions (chmod, chown) and why they matter in cloud
+- Build a command cheatsheet I can reference later
