@@ -16,7 +16,7 @@ Daily commitment: 2-3 hours
 
 ## Daily Log
 
-### Day 1 - [April 30,2026]
+### Day 1 - April 30,2026
 
 **What I learned:**
 
@@ -34,6 +34,7 @@ Daily commitment: 2-3 hours
 - installed WSL,
 - Converted my MacbookAir into Linux machine
 - installed Git on Linux
+- Created GitHub repo for logging my daily journey
 
 **Challenges:**
 
