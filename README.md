@@ -57,31 +57,31 @@ Daily commitment: 2-3 hours
 - `/var/log` holds the log files and caches. This is critical for debugging.
 - `ls -l var/log | cat auth.log | tail -20` this gives me last 20 lines of log data on the auth.log file. It is also my first big chain command!
 - File Permissions:
-  -- `r` means Read permission. User can read the contents of the file.
-  -- `w` means Write persmission. User can write on the file.
-  -- `x` means Execute permission. User can run the file.
-  -- `ls -l` shows the file permissions at the start of the line.
-  -- `chmod` command allows changing of file permission using numbers. `r`=4, `w`=2 and `x`=1
-  -- First number is for `User`, second for `group` and third for `others`.
-  -- So the command `chmod 744 file.sh` means User has read, write and execute permission. And the group and others only have read permission.
-  -- This file permission system explains why I could not create a `txt` file inside `/var/log`. The owner of `/var/log` is `root` and the group is `syslog`. Everyone else has execute permission only.
+  - `r` means Read permission. User can read the contents of the file.
+  - `w` means Write persmission. User can write on the file.
+  - `x` means Execute permission. User can run the file.
+  - `ls -l` shows the file permissions at the start of the line.
+  - `chmod` command allows changing of file permission using numbers. `r`=4, `w`=2 and `x`=1
+  - First number is for `User`, second for `group` and third for `others`.
+  - So the command `chmod 744 file.sh` means User has read, write and execute permission. And the group and others only have read permission.
+  - This file permission system explains why I could not create a `txt` file inside `/var/log`. The owner of `/var/log` is `root` and the group is `syslog`. Everyone else has execute permission only.
 
   **What I built:**
 
 - Used `mkdir ~/linux-practice` to create a folder in User's home directory.
 - Created three files using `touch script.sh notes.txt secret.txt`.
 - Chnaged file permission of:
-  -- `chmod 755 script.sh`. Writeable only by me and executable by all
-  -- `chmod 644 notes.txt`. Writeable only by me and readable by all
-  -- `chmod 600 secret.txt`. Only I can read and write - like an SSH key or ENV key.
-  -- `ls -la` to verify the permission chnages
+  - `chmod 755 script.sh`. Writeable only by me and executable by all
+  - `chmod 644 notes.txt`. Writeable only by me and readable by all
+  - `chmod 600 secret.txt`. Only I can read and write - like an SSH key or ENV key.
+  - `ls -la` to verify the permission chnages
 - Writing onto the sscript.sh file:
-  -- `echo '#!/bin/bash' > script.sh`. This writes the part enclosed by the quotation mark.
-  -- `echo 'echo Hello Cloud Engineer' >> script.sh`. This appends the `echo` command onto the file in a new line.
+  - `echo '#!/bin/bash' > script.sh`. This writes the part enclosed by the quotation mark.
+  - `echo 'echo Hello Cloud Engineer' >> script.sh`. This appends the `echo` command onto the file in a new line.
 - Writing onto the notes.txt file:
-  -- `echo "These are my notes"`.
+  - `echo "These are my notes"`.
 - Writing onto the secret.txt file:
-  -- `echo "This is private"` mimicking a secret key.
+  - `echo "This is private"` mimicking a secret key.
 - Running the script.sh by using `bash script.sh` and it executes!.
 
 - **Challenges:**
