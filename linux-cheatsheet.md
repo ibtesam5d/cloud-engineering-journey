@@ -11,3 +11,4 @@ mkdir - to make a directory
 cd - to change directory
 ls - lists contents in a directory
 ls -la - lists contents in a directory in a list format along with file permissions and file size and the -a flag shows hidden files and folders
+! - this needs to be inside a single quote.
