@@ -84,14 +84,15 @@ Daily commitment: 2-3 hours
   - `echo "This is private"` mimicking a secret key.
 - Running the script.sh by using `bash script.sh` and it executes!.
 
-- **Challenges:**
+**Challenges:**
+
 - I could see the contents of `/var/log` from any directory I am currently in but, cannot access the content without being inside the `var/log` directory.
 - So to use my previous chain command I have to run `cd /var/log` first.
 - I also could not create any file inside `log` folder. Tried running `cat auth.log | tail -20 > checked-log.txt` and returned permission denied.
 - Using double quote to write `echo "#!/bin/bash"` throws error: event not found. Google search revealed that any string starting with `!` causes the shell to find command in pervious history.
   -- Resolved the issue by using single quotes `''`.
 
-  **Tomorrow:**
+**Tomorrow:**
 
 - Learn IP addressing, CIDR notation, and the difference between public/private IPs
 - Study essential ports and protocols (SSH, HTTP, HTTPS, DNS, RDP, MySQL)
