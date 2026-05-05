@@ -56,6 +56,7 @@ Daily commitment: 2-3 hours
 - `/etc` holds all the config files.
 - `/var/log` holds the log files and caches. This is critical for debugging.
 - `ls -l var/log | cat auth.log | tail -20` this gives me last 20 lines of log data on the auth.log file. It is also my first big chain command!
+- The pipe was incorrect. I have to use `tail -20 /var/log/auth.log` or `cat /var/log/auth.log | tail -20`
 - File Permissions:
   - `r` means Read permission. User can read the contents of the file.
   - `w` means Write persmission. User can write on the file.
