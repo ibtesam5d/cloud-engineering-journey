@@ -66,7 +66,7 @@ Daily commitment: 2-3 hours
   - So the command `chmod 744 file.sh` means User has read, write and execute permission. And the group and others only have read permission.
   - This file permission system explains why I could not create a `txt` file inside `/var/log`. The owner of `/var/log` is `root` and the group is `syslog`. Everyone else has execute permission only.
 
-  **What I built:**
+**What I built:**
 
 - Used `mkdir ~/linux-practice` to create a folder in User's home directory.
 - Created three files using `touch script.sh notes.txt secret.txt`.
