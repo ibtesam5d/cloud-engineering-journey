@@ -8,7 +8,7 @@ Daily commitment: 2-3 hours
 
 - [x] Day 1: April 30, 2026 Environment setup complete + Linux Refresh
 - [x] Day 2: May 4, 2026 Linux refresh
-- [ ] Day 3: Networking
+- [x] Day 3: Networking
 - [ ] Day 4: HTTP/APIs
 - [ ] Day 5: Git/GitHub
 - [ ] Day 6: Python
@@ -100,3 +100,56 @@ Daily commitment: 2-3 hours
 - Understand how DNS resolution works and its relevance to AWS Route 53
 - Practice networking commands: ping, dig, nslookup, traceroute, ss
 - Build a networking cheatsheet and commit it to the repo
+
+### Day 3 - May 5, 2026
+
+**What I learned:**
+
+- IP Address is a unique address that every device on a network gets. And there are public IP address and private IP address.
+- Public IP is reachable over the internet and private IP is reachable only within the private network.
+- CIDR notation defines range of IPs available in a network.
+- DNS translates domain name into IP address for devices to connect to each other. In AWS, Route53 is the service that works as DNS service.
+
+**What I built:**
+
+- Checking my machines IP info
+  - using command `ip addr show` and `hostname -I`
+  - Both returned IP address but the the first command also gave IPv6 address as well and many other info on the NIC.
+
+- Tested connectivity
+  - Pinging google.com with command `ping google.com -c4`
+  - The `-c4` flag sends 4 packets to google.com and ends the connection otherwise it pings without interruption.
+  - Four packets with `icmp_seq=1` through `icmp_seq=4` was sent. Each packet was 64 bytes and with ttl=113 (ttl stands for time to liv - which defines how long the packet should live before it expires). It took about `36.5ms` to reach google.com IP `142.250.137.100`.
+
+- DNS Lookup Tools
+  - `nslookup google.com` and `dig google.com`
+  - This two command queried on my local DNS resolver which then fetches information from authoritative nameservers upstream.
+  - Multiple IP addresses came up on the DNS for google.com
+
+- Checked what Ports are open on my machine
+  - Used command `ss -tuln` and `netstat -tuln` to see listening ports
+  - Results showed port 53 and 631 was actively listening.
+  - Port 53 is used for DNS and 631 for print jobs
+
+- Traced the route of packets to reach a server
+  - Installed `traceroute`
+  - Used `traceroute google.com` to trace the packets reaching to `google.com`
+  - Results showed 16 hops before reaching to `google.com` server.
+  - 9 hops responded while 7 hops did not.
+
+- Checked if a specific port is open
+  - Used command `nc -zv google.com 443` to check if port 443 was open on google.com. Connection succeeded and it is open.
+  - Used command `nc -zv google.com 22` to check if port 22 which is used for SSH was open or not. Connection did not succeed.
+  - The tool netcat's two flag used above `-z` and `-v` tells netcat tool to scan only and print the result whether succeed or not respectively.
+
+**Challenges:**
+
+- The command `nc -zv google.com 22` did not return anything
+  - Was expecting a `"connection refused"` message as I used the `-v` verbose flag to let me know the result
+  - Further research showed that if a server actively refuses then it shows `"connection refused"` and if the server does not respond to it such as port blocked/filtered then nothing happens and hanged on terminal and had to cancel manually by using `ctrl+c`.
+
+- The missing hops on `traceroute` was configured not to respond to traceroute that I thought was skipping or ignored. It was private routers in the middle configured in that way to not to respond but do forward the packets.
+
+**Tomorrow:**
+
+- Day 4: HTTP/APIs
