@@ -225,6 +225,7 @@ Daily commitment: 2-3 hours
 **Challenges:**
 
 - When saving the output of the GET request, only the body content was saved without any headers.
+  - Used `--dump-header` flag to save the header.
 
 **Tommorrow:**
 
