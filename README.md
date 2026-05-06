@@ -9,7 +9,7 @@ Daily commitment: 2-3 hours
 - [x] Day 1: April 30, 2026 Environment setup complete + Linux Refresh
 - [x] Day 2: May 4, 2026 Linux refresh
 - [x] Day 3: Networking
-- [ ] Day 4: HTTP/APIs
+- [x] Day 4: HTTP/APIs
 - [ ] Day 5: Git/GitHub
 - [ ] Day 6: Python
 - [ ] Day 7: Review
@@ -153,3 +153,103 @@ Daily commitment: 2-3 hours
 **Tomorrow:**
 
 - Day 4: HTTP/APIs
+
+### Day 4 - May 6, 2026
+
+**What I learned:**
+
+- HTTP Request and Response
+- HTTP Methods
+  - GET - Retrieves data (Fetch a file from S3)
+  - POST - Send/create data (Create an EC2 instance)
+  - PUT - Update/replace data (Place a resource at a specific location you define - Upload file to S3, Create S3 bucket)
+  - DELETE - Delete data (Delete an S3 object)
+  - PATCH - Partial update (Update one field in a record)
+- HTTP Status Codes:
+  - `200` - Everything Ok
+  - `201` - Resource was created successfully
+  - `301` - URL has changed, redirecting
+  - `400` - Request malformed
+  - `401` - Not logged in or no credentials
+  - `403` - Logged in but no permission
+  - `404` - Resource doesn't exist
+  - `500` - Server crashed
+  - `502` - Load balancer got bad response from server
+  - `503` - Server is overloaded or down
+- API + REST
+
+**What I Built:**
+
+- Installed curl:
+  - `sudo apt install curl -y`
+  - `curl --version` to confirm
+
+- Made API call to my github profile:
+  - `curl https://api.github.com/users/ibtesam5d`
+  - This returned JSON data about my profile on GitHub
+  - But could not see any HTTP response or status codes just raw JSON data
+
+- Investigated full HTTP request and response by using the `-v` flag:
+  - At first the the DNS resolved at port 443 and connected
+  - Second, TLS Handshake took place where the client and server agreed on the security cypher. Data showed that client (my machine) asked to change cypher. TLS handshake finished and a SSL connection was was established using TLSv1.3.
+  - After the connection establishment, the request and response commenced with `HTTP 200` status code.
+  - General Header, Request Header, and Response Header wass visible on the terminal along with the JSON body.
+
+- Triggered a 404 response on purpose:
+  - `curl -v https://api.github.com/users/thisuserdoesnotexist99999899898`
+  - This time exact same TLS handshake happened and connection was established.
+  - Get was request sent successfully
+  - The response header had `HTTP 404` which is for content not found.
+  - Looked at the JSON body content:
+    - ```
+      {
+        "message": "Not Found",
+        "documentation_url": "https://docs.github.com/rest",
+        "status": "404"
+      }
+      ```
+    - This JOSN revealed further information on the occured error which is content not found.
+
+- Made a GET request and saved the output
+  - Used the same command again `curl -v https://api.github.com/ibtesam5d -o ibtesam.json` but added `-o` flag for the output to save on file `ibtesam.json`.
+  - verified the output by using `cat ibtesam.json`
+  - Output was saved successfully
+
+- Installed `jq` for pretty printing the JSON and saved the `"bio"` on a text file:
+  - Used `sudo apt install jq -y`
+  - `cat ibtesam.json | jq .` to see the full JSON
+  - Accessed just one field by using `cat ibtesam.json | jq ".bio"`
+  - Saved the bio on file `my_github_bio.txt` by using `cat ibtesam.json | jq ".bio" > my_github_bio.txt`
+  - Verified the save using `ls` to see the file is there or not and `cat` to print the content.
+
+**Challenges:**
+
+- When saving the output of the GET request, only the body content was saved without any headers.
+
+**Tommorrow:**
+
+- Learn Git branching, merging, and resolving conflicts
+- Understand the GitHub workflow used in real dev teams
+- Practice: create branches, make changes, merge, handle a conflict
+- Build a Git cheatsheet and commit it to the repo
+
+### Day 5 -
+
+**What I learned:**
+**What I Built:**
+**Challenges:**
+**Tommorrow:**
+
+### Day 6 -
+
+**What I learned:**
+**What I Built:**
+**Challenges:**
+**Tommorrow:**
+
+### Day 7 -
+
+**What I learned:**
+**What I Built:**
+**Challenges:**
+**Tommorrow:**
