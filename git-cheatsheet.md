@@ -8,6 +8,10 @@ git checkout -b #to create a new bramch
 
 git merge <branch name> #to merge onto the current branch
 
+git push #pushes commits to GitHub or other git platforms
+
+git pull #pull latest changes from GitHub
+
 #basic commands
 
 ##git add

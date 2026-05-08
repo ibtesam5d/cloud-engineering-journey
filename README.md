@@ -234,12 +234,110 @@ Daily commitment: 2-3 hours
 - Practice: create branches, make changes, merge, handle a conflict
 - Build a Git cheatsheet and commit it to the repo
 
-### Day 5 -
+### Day 5 - May 8, 2026
 
 **What I learned:**
+
+- How Git tracks changes in three stages:
+  - Working/Edit phase
+  - Staging arena
+  - Repository (commit)
+
+- Git workflow such as:
+  - Branching,
+  - merging,
+  - pull requests,
+  - solving merge conflicts
+
+- Core git commands such as `git init` `git status` `git log --oneline` `git merge` `git checkout -b <branchname>` and so on.
+
+- How branches let me work on something without breaking the main codebase.
+  - I create a branch,
+  - do my work and
+  - if everythning checksout, I merge it to the main.
+
 **What I Built:**
-**Challenges:**
-**Tommorrow:**
+
+- Create and switch to a new branch
+  - `git checkout -b feature/git-practice`
+
+- Create a new file on this branch
+
+  ```
+  echo "Git Practice"> git-notes.md
+  echo "Practice branching and merging">> git-notes.md
+  ```
+
+  - Stage and commit:
+
+    ```
+    git add git-notes.md
+    git status #verify it's staged
+    git commit -m "add git practice notes"
+
+    ```
+
+  - Checking the log : `git log --oneline` to see if the commit is logged
+  - Switching back to main using `git checkout main`
+
+- Merge the new feature branch to main:
+
+  ```
+  git merge feature/git-practice
+  ls #to see if the .md file is now present or not
+  ```
+
+- Simulating a merge conflict:
+  - Creating a file on main
+
+    ```
+    echo "Hello from main"> conflict-test.txt
+    git add conflict-test.txt
+    git commit -m "add conflict test file on main"
+
+    ```
+
+  - Creating a new branch and edit the same conflict test file:
+    ```
+    git checkout -b feature/conflict-test
+    echo "Hello from feature branch"> conflict-test.txt
+    git add conflict-test.txt
+    git commit -m "edit conflict test file on feature branch"
+    ```
+  - Switch back to main and edit the same file again
+
+    ```
+    git checkout main
+    echo "Hello from main again"> conflict-test.txt
+    git add conflict-test.txt
+    git commit -m "edit conflict test file on main again"
+    git merge feature/conflict-test
+    ```
+
+    - This throws merge conflict error
+
+- Resolving the merge conflict
+  - Opening the conflicted file and editing to correct the issue
+
+    ```
+    cat conflict-test.txt
+    <<<<<<< HEAD
+    Hello from main again
+    =======
+    Hello from feature branch
+    >>>>>>> feature/conflict-test
+
+    nano conflict-test.txt #editing to correct the issue
+    ```
+
+  - Finally, commiting and pushing to GitHUb
+    ```
+    git add conflict-test.txt
+    git commit -m "resolve merge conflict"
+    git push origin main
+    ```
+    **Challenges:**
+    **Tommorrow:**
 
 ### Day 6 -
 
