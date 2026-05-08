@@ -331,12 +331,14 @@ Daily commitment: 2-3 hours
     ```
 
   - Finally, commiting and pushing to GitHUb
-    ```
-    git add conflict-test.txt
+    `     git add conflict-test.txt
     git commit -m "resolve merge conflict"
     git push origin main
-    ```
+    `
     **Challenges:**
+
+- Was confused between the command `git branch` and `git checkout -b <branchname>`
+  - One creates abranch and the later creates and moved onto it
     **Tommorrow:**
 
 ### Day 6 -
