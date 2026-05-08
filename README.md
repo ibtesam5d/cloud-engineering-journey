@@ -10,7 +10,7 @@ Daily commitment: 2-3 hours
 - [x] Day 2: May 4, 2026 Linux refresh
 - [x] Day 3: Networking
 - [x] Day 4: HTTP/APIs
-- [ ] Day 5: Git/GitHub
+- [x] Day 5: Git/GitHub
 - [ ] Day 6: Python
 - [ ] Day 7: Review
 
@@ -240,7 +240,7 @@ Daily commitment: 2-3 hours
 
 - How Git tracks changes in three stages:
   - Working/Edit phase
-  - Staging arena
+  - Staging area
   - Repository (commit)
 
 - Git workflow such as:
@@ -331,15 +331,33 @@ Daily commitment: 2-3 hours
     ```
 
   - Finally, commiting and pushing to GitHUb
-    `     git add conflict-test.txt
-    git commit -m "resolve merge conflict"
-    git push origin main
-    `
-    **Challenges:**
+    `    git add conflict-test.txt
+git commit -m "resolve merge conflict"
+git push origin main`
+
+**Challenges:**
 
 - Was confused between the command `git branch` and `git checkout -b <branchname>`
   - One creates abranch and the later creates and moved onto it
-    **Tommorrow:**
+- Mistakenly created the git-cheatsheet.md file on feature branch. Merged it back to the main. But the correct response is:
+
+  ```
+  git checkout feature/git-practice -- git-cheatsheet.md
+
+  # That file is now on main, staged and ready to commit
+
+  git add git-cheatsheet.md
+  git commit -m "bring git-cheatsheet from feature branch"
+  ```
+
+- Final checks before leaving wasdone by using `git status` and `git log --oneline`
+
+**Tommorrow:**
+
+- Python basics refresh — variables, loops, functions, file I/O
+- Write Python scripts that do real things
+- Introduction to why Python matters for cloud automation
+- Build a cheatsheet and commit to repo
 
 ### Day 6 -
 

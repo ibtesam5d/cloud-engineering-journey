@@ -12,6 +12,8 @@ git push #pushes commits to GitHub or other git platforms
 
 git pull #pull latest changes from GitHub
 
+git checkout <branch_name> --<filename> #to copy a single file from another branch
+
 #basic commands
 
 ##git add
