@@ -12,7 +12,7 @@ Daily commitment: 2-3 hours
 - [x] Day 4: HTTP/APIs
 - [x] Day 5: Git/GitHub
 - [x] Day 6: Python
-- [ ] Day 7: Review
+- [x] Day 7: Review
 
 ## Daily Log
 
@@ -507,9 +507,12 @@ print(f"{service["name"]} is stopped in {service["region"]} \n")
 
 - Week 1 Review
 
-### Day 7 -
+### Day 7 - May 13, 2026
 
 **What I learned:**
+
+- Week 1-2 review
+
 **What I Built:**
-**Challenges:**
-**Tommorrow:**
+
+- A all-in-all python script from the day 6 that creates a cloud report and checks error
