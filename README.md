@@ -11,7 +11,7 @@ Daily commitment: 2-3 hours
 - [x] Day 3: Networking
 - [x] Day 4: HTTP/APIs
 - [x] Day 5: Git/GitHub
-- [ ] Day 6: Python
+- [x] Day 6: Python
 - [ ] Day 7: Review
 
 ## Daily Log
