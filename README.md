@@ -227,7 +227,7 @@ Daily commitment: 2-3 hours
 - When saving the output of the GET request, only the body content was saved without any headers.
   - Used `--dump-header` flag to save the header.
 
-**Tommorrow:**
+**Tomorrow:**
 
 - Learn Git branching, merging, and resolving conflicts
 - Understand the GitHub workflow used in real dev teams
@@ -354,7 +354,7 @@ Daily commitment: 2-3 hours
 
 - Final checks before leaving was done by using `git status` and `git log --oneline`
 
-**Tommorrow:**
+**Tomorrow:**
 
 - Python basics refresh — variables, loops, functions, file I/O
 - Write Python scripts that do real things
@@ -503,7 +503,7 @@ print(f"{service["name"]} is stopped in {service["region"]} \n")
 
 - Learned why it is highly recommended to use `with` when using `open()` method as it releases the memory automatically otherwise have to close manually to prevent memory leaking.
 
-**Tommorrow:**
+**Tomorrow:**
 
 - Week 1 Review
 
@@ -511,8 +511,37 @@ print(f"{service["name"]} is stopped in {service["region"]} \n")
 
 **What I learned:**
 
-- Week 1-2 review
+- What was the hardest concept this week?
+  - The order in which I should investigate for any of the AWS services
+
+- What concept clicked faster than expected?
+  - Python scripting
+
+- What are you most confident about going into AWS?
+  - Using the AWS CLI, Reading logs, and automating workflows with Python
+
+- What are you least confident about?
+  - Troubleshooting steps order
+
+**Key lessons from Week 1:**
+
+- chmod 600 for .pem files — check locally first before CloudWatch
+- Subnet CIDRs must be unique non-overlapping slices of the VPC range
+- Debugging process: run → observe → compare → fix
 
 **What I Built:**
 
 - A all-in-all python script from the day 6 that creates a cloud report and checks error
+  - Script is in `week1_summary.py`
+
+**Challenges:**
+
+- Debugging the error counter — had case sensitivity mismatch
+- .lower() fix and why it matters
+
+**Tomorrow:**
+
+- Phase 1 begins — AWS account setup
+- IAM fundamentals — users, roles, policies
+- AWS CLI installation and configuration
+- Free Tier setup and billing alerts
