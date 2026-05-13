@@ -1,0 +1,2 @@
+ERROR: S3 bucket access denied for user arn:aws:iam::123
+ERROR: RDS connection timeout after 30s

@@ -359,12 +359,149 @@ git push origin main`
 - Introduction to why Python matters for cloud automation
 - Build a cheatsheet and commit to repo
 
-### Day 6 -
+### Day 6 - May 12, 2026
 
 **What I learned:**
+
+- Why python for cloud
+  - AWS automation - boto3 scripts to manage EC2, S3, IAM
+  - Lambda functions - Serverless code triggered by events
+  - CLI tools - Scripts that automate repetitive tasks
+  - Infrastructure testing - Verify if Terraform deployed correctly
+  - Log Parsing - Extract errors from CloudWatch logs
+
+- Core Python concepts such as variables, data types, conditionals, loops, functions, file I/O
+
+- FreeCodeCamp youtube tutorial for filling out any gaps in knowledge
+
 **What I Built:**
+
+- Three scripts that simulates real world AWS tasks
+  - Scripts are in `cloud_scripts.py`
+
+- Script 1: AWS Service Inventory, Simulates what boto3 returns when listing services
+  - Started with a list containing AWS services
+
+  ```
+  services = [
+    {"name": "EC2", "region": "ca-central-1", "running": True},
+    {"name": "RDS", "region": "ca-central-1", "running": False},
+    {"name": "S3", "region": "us-east-1", "running": True},
+    {"name": "Lambda", "region": "ca-central-1", "running": True}
+  ]
+  ```
+
+  - Looping through this `services` list for running/stopped services and printing on to the terminal console
+
+  ```
+  print("=== Running Services ===")
+  for service in services:
+      if service["running"]:
+          print(f"{service['name']} is running in {service['region']}")
+
+  print("\n=== Stopped Services ===")
+  for service in services:
+      if not service["running"]:
+          print(f"{service['name']} is stopped in {service['region']} \n")
+  ```
+
+  - Result in the terminal:
+
+  ```
+  === Running Services ===
+  EC2 is running in ca-central-1
+  S3 is running in us-east-1
+  Lambda is running in ca-central-1
+
+  === Stopped Services ===
+  RDS is stopped in ca-central-1
+  ```
+
+- Script 2: HTTP status code checker, Simulates checking response codes from AWS API calls
+  - Created a function `def check_http_status(code)` that has HTTP status code mapped in a dictionary with codes and messages as key/value pair. It then returns the value given by the code. Also, added a default value `"Unknown status code"` if passed code does not match with the `status_map` dictionary
+
+  ```
+  def check_http_status(code):
+    status_map = {
+        200: "OK - Request successful",
+        201: "Created - Resource created",
+        400: "Bad Request - Check your input",
+        401: "Unauthorized - Check your credentials",
+        403: "Forbidden - Check your permissions",
+        404: "Not Found - Resource doesn't exist",
+        500: "Internal Server Error - Server side issue",
+        502: "Bad Gateway - Load balancer issue"
+    }
+    return status_map.get(code, "Unknown status code")
+  ```
+
+  - Created a list with test codes that simulates HTTP status codes from services and then looped through the list to print out the codes and messages
+
+  ```
+  test_codes = [200, 403, 404, 502, 999]
+
+  for code in test_codes:
+      print(f"{code}: {check_http_status(code)}")
+  ```
+
+  - Running the script:
+
+  ```
+  200: OK - Request successful
+  403: Forbidden - Check your permissions
+  404: Not Found - Resource doesn't exist
+  502: Bad Gateway - Load balancer issue
+  999: Unknown status code
+  ```
+
+- Script 3: Log Parser, Simulates parsing CloudWatch log entries
+  - Staeted with a `logs` list that simulates logs from Cloudwatch
+
+  ```
+  logs = [
+    "INFO: EC2 instance i-1234 started successfully",
+    "ERROR: S3 bucket access denied for user arn:aws:iam::123",
+    "INFO: Lambda function executed in 234ms",
+    "ERROR: RDS connection timeout after 30s",
+    "INFO: CloudWatch alarm triggered"
+    ]
+  ```
+
+  - Used `open()` method to create a error log text file and writing error logs onto the file by looping through the logs and finding matching `ERROR` keyword.
+
+  ```
+  print("\n=== ERROR logs ===")
+  with open("error_log.txt", "w") as f:
+      for log in logs:
+          if "ERROR" in log:
+              print(log)
+              f.write(log + "\n")
+
+
+  print("\nErrors saved to error_log.txt")
+  ```
+
+  - Running the script:
+
+  ```
+  === ERROR logs ===
+  ERROR: S3 bucket access denied for user arn:aws:iam::123
+  ERROR: RDS connection timeout after 30s
+  ```
+
 **Challenges:**
+
+- Ran into syntax error during `f-string` usage where I used double quotes again for the key string in the ordered list
+
+```
+print(f"{service["name"]} is stopped in {service["region"]} \n")
+```
+
+- Learned why it is highly recommended to use `with` when using `open()` method as it releases the memory automatically otherwise have to close manually to prevent memory leaking.
+
 **Tommorrow:**
+
+- Week 1 Review
 
 ### Day 7 -
 
