@@ -119,7 +119,7 @@ Daily commitment: 2-3 hours
 - Tested connectivity
   - Pinging google.com with command `ping google.com -c4`
   - The `-c4` flag sends 4 packets to google.com and ends the connection otherwise it pings without interruption.
-  - Four packets with `icmp_seq=1` through `icmp_seq=4` was sent. Each packet was 64 bytes and with ttl=113 (ttl stands for time to liv - which defines how long the packet should live before it expires). It took about `36.5ms` to reach google.com IP `142.250.137.100`.
+  - Four packets with `icmp_seq=1` through `icmp_seq=4` was sent. Each packet was 64 bytes and with ttl=113 (ttl stands for time to live - which defines how long the packet should live before it expires). It took about `36.5ms` to reach google.com IP `142.250.137.100`.
 
 - DNS Lookup Tools
   - `nslookup google.com` and `dig google.com`
@@ -331,9 +331,11 @@ Daily commitment: 2-3 hours
     ```
 
   - Finally, commiting and pushing to GitHUb
-    `    git add conflict-test.txt
-git commit -m "resolve merge conflict"
-git push origin main`
+    ```
+    git add conflict-test.txt
+    git commit -m "resolve merge conflict"
+    git push origin main
+    ```
 
 **Challenges:**
 
@@ -350,7 +352,7 @@ git push origin main`
   git commit -m "bring git-cheatsheet from feature branch"
   ```
 
-- Final checks before leaving wasdone by using `git status` and `git log --oneline`
+- Final checks before leaving was done by using `git status` and `git log --oneline`
 
 **Tommorrow:**
 
@@ -380,7 +382,7 @@ git push origin main`
   - Scripts are in `cloud_scripts.py`
 
 - Script 1: AWS Service Inventory, Simulates what boto3 returns when listing services
-  - Started with a list containing AWS services
+  - Started with a ordered list containing AWS services
 
   ```
   services = [
@@ -455,7 +457,7 @@ git push origin main`
   ```
 
 - Script 3: Log Parser, Simulates parsing CloudWatch log entries
-  - Staeted with a `logs` list that simulates logs from Cloudwatch
+  - Started with a `logs` list that simulates logs from Cloudwatch
 
   ```
   logs = [
@@ -487,6 +489,8 @@ git push origin main`
   === ERROR logs ===
   ERROR: S3 bucket access denied for user arn:aws:iam::123
   ERROR: RDS connection timeout after 30s
+
+  Errors saved to error_log.txt
   ```
 
 **Challenges:**
