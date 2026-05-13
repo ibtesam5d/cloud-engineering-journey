@@ -1,0 +1,16 @@
+=== Week 1 Cloud Report ===
+Generated: 2026-05-13 17:05:06
+
+=== Running Services ===
+EC2 | ca-central-1 | port 22
+S3 | us-east-1 | port 443
+Lambda | ca-central-1 | port 443
+
+=== Stopped Services ===
+RDS | ca-central-1 | port 3306
+
+=== HTTP Status Check ===
+200: OK
+403: Forbidden - check permissions
+404: Not found
+502: Bad Gateway - load balancer issue
