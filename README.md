@@ -6,8 +6,8 @@ Daily commitment: 2-3 hours
 
 ## Week 1: Reactivation Sprint
 
-- [x] Day 1: April 30, 2026 Environment setup complete + Linux Refresh
-- [x] Day 2: May 4, 2026 Linux refresh
+- [x] Day 1: Environment setup complete + Linux Refresh
+- [x] Day 2: Linux refresh
 - [x] Day 3: Networking
 - [x] Day 4: HTTP/APIs
 - [x] Day 5: Git/GitHub
