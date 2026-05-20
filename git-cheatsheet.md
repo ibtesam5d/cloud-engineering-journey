@@ -26,7 +26,7 @@ git add \* #adds everything but the deleted files/folders to be staged
 git add \*.txt #adds all the .txt file to be staged excluding thge deleted ones
 
 ##git remove
-git rm <filename> #deletes the fileand also stages sos no need to run add
+git rm <filename> #deletes the file and also stages sos no need to run add
 
 git reset --hard #brings back the deleted files and folders
 
@@ -44,6 +44,6 @@ git merge <branch_name> #merges the branch to the current one
 ##version control
 git checkout <commit_id> #moves to a previously commited version with commit ID.
 
-git restore <filename/folder/.> #discards changes to a specific file/folder or . for discarding all uncommitted changes in the current directory or subdirectory to their last staged or commited state
+git restore <filename or folder or .> #discards changes to a specific file/folder or . for discarding all uncommitted changes in the current directory or subdirectory to their last staged or commited state
 
-git restore --staged ./filename #unstages everything in the current directory
+git restore --staged . or filename #unstages everything in the current directory or a file

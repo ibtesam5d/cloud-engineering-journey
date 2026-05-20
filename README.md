@@ -87,8 +87,6 @@ Daily commitment: 2-3 hours
 
 **Challenges:**
 
-- I could see the contents of `/var/log` from any directory I am currently in but, cannot access the content without being inside the `var/log` directory.
-- So to use my previous chain command I have to run `cd /var/log` first.
 - I also could not create any file inside `log` folder. Tried running `cat auth.log | tail -20 > checked-log.txt` and returned permission denied.
 - Using double quote to write `echo "#!/bin/bash"` throws error: event not found. Google search revealed that any string starting with `!` causes the shell to find command in pervious history.
   -- Resolved the issue by using single quotes `''`.
@@ -191,14 +189,14 @@ Daily commitment: 2-3 hours
 
 - Investigated full HTTP request and response by using the `-v` flag:
   - At first the the DNS resolved at port 443 and connected
-  - Second, TLS Handshake took place where the client and server agreed on the security cypher. Data showed that client (my machine) asked to change cypher. TLS handshake finished and a SSL connection was was established using TLSv1.3.
+  - Second, TLS Handshake took place where the client and server agreed on the security cypher. Data showed that client (my machine) asked to change cypher. TLS handshake finished and a SSL connection was established using TLSv1.3.
   - After the connection establishment, the request and response commenced with `HTTP 200` status code.
   - General Header, Request Header, and Response Header wass visible on the terminal along with the JSON body.
 
 - Triggered a 404 response on purpose:
   - `curl -v https://api.github.com/users/thisuserdoesnotexist99999899898`
   - This time exact same TLS handshake happened and connection was established.
-  - Get was request sent successfully
+  - `GET` request sent successfully
   - The response header had `HTTP 404` which is for content not found.
   - Looked at the JSON body content:
     - ```
@@ -249,7 +247,7 @@ Daily commitment: 2-3 hours
   - pull requests,
   - solving merge conflicts
 
-- Core git commands such as `git init` `git status` `git log --oneline` `git merge` `git checkout -b <branchname>` and so on.
+- Core git commands such as `git init` `git status` `git log --oneline` `git merge` `git checkout -b <branchname>` `git add .` `git commit` `git push` and others.
 
 - How branches let me work on something without breaking the main codebase.
   - I create a branch,
@@ -545,3 +543,103 @@ print(f"{service["name"]} is stopped in {service["region"]} \n")
 - IAM fundamentals — users, roles, policies
 - AWS CLI installation and configuration
 - Free Tier setup and billing alerts
+
+## Week 2: AWS
+
+- [x] Day 1: AWS Account Setup + IAM
+- [x] Day 2: Linux refresh
+- [x] Day 3: Networking
+- [x] Day 4: HTTP/APIs
+- [x] Day 5: Git/GitHub
+- [x] Day 6: Python
+- [x] Day 7: Review
+
+### Day 1 - May 19, 2026
+
+**What I learned:**
+
+- IAM Core Concepts such as:
+  - Who are you? - Authentication
+  - What can you do? - Authorization
+
+- Principle of Least Privilege
+  - Give users and services only the permissions they need and nothing more. An EC2 instance that only needs to read from S3 should only have s3:GetObject not full S3 access.
+
+- ## IAM Users vs Roles
+
+  | -----       | IAM Users                         | IAM Role                                    |
+  | ----------- | --------------------------------- | ------------------------------------------- |
+  | Who uses it | A person                          | A service or application                    |
+  | Credentials | Username + password + access keys | Temporary credentials assumed automatically |
+  | Example     | Logging into AWS CLI              | EC2 instance reading from S3                |
+
+- IAM Policies
+  - These are JSON files containing instructions to either allow or deny access to an action such as ec2:StartInstance to a resource such as instance, bucket, etc.
+  -
+
+  ```
+  {
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": "s3:GetObject",
+            "Resource": "arn:aws:s3:::my-bucket/*"
+        }
+    ]
+  }
+  ```
+
+  - IAM Policies are used to enforce the principle of least privelege
+
+**What I Built:**
+
+- AWS Account setup
+
+- Securing root account by
+  - Enabling MFA
+
+- Creating IAM admin user by attaching the `AdministratorAccess` policy, enabling console access. This way never have to use the root account for daily driver work.
+
+- Setting up billing alerts by
+  - Creating a budget
+  - Setting a monthly cost budget
+  - Alert at 80% of budget by sending an email
+
+- Installing and configuring AWS CLI:
+
+  ```
+  # CLI installation
+  sudo apt install awscli -y
+
+  # Verify installation
+  aws --version
+
+  # Configure with IAM user credentials
+  aws configure
+  ```
+
+  - Testing CLI is working or not:
+
+    ```
+    # Listing IAM users — if this returns data, CLI is configured correctly
+    aws iam list-users
+
+    # Checking who I am
+    aws sts get-caller-identity
+    ```
+
+    - JSON output of both commands confirmed the successful installation and configuration of AWS CLI
+
+**Challenges:**
+
+- Created IAM user without attaching AdministratorAccess policy
+- Fixed by going to IAM → Users → Permissions → Add Permissions
+- Lesson: always verify policy attachment immediately after user creation
+
+**Tomorrow:**
+
+- EC2 deep dive — instances, AMIs, instance types
+- Launch your first EC2 instance
+- SSH into it from your Linux machine
+- Deploy a simple web server

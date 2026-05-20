@@ -22,6 +22,7 @@ instance = {
     "running" : True
 }
 
+print(instance)
 #conditionals
 status_code = 200
 
@@ -85,7 +86,7 @@ for service in ec2_services:
 
 
 # Causes syntax error — Python gets confused by nested double quotes
-print(f"{service["name"]}")
+print(f"{service['name']}")
 
 # Fix 1: use single quotes for the key inside f-string
 print(f"{service['name']}")
