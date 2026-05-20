@@ -565,7 +565,7 @@ print(f"{service["name"]} is stopped in {service["region"]} \n")
 - Principle of Least Privilege
   - Give users and services only the permissions they need and nothing more. An EC2 instance that only needs to read from S3 should only have s3:GetObject not full S3 access.
 
-- ## IAM Users vs Roles
+- IAM Users vs Roles
 
   | -----       | IAM Users                         | IAM Role                                    |
   | ----------- | --------------------------------- | ------------------------------------------- |
