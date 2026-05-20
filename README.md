@@ -575,6 +575,7 @@ print(f"{service["name"]} is stopped in {service["region"]} \n")
 
 - IAM Policies
   - These are JSON files containing instructions to either allow or deny access to an action such as ec2:StartInstance to a resource such as instance, bucket, etc.
+
   ```
   {
     "Version": "2012-10-17",
@@ -641,3 +642,118 @@ print(f"{service["name"]} is stopped in {service["region"]} \n")
 - Launch your first EC2 instance
 - SSH into it from your Linux machine
 - Deploy a simple web server
+
+### Day 2 - May 20, 2026
+
+**What I learned:**
+
+- EC2 = Elastic Compute Cloud. It's a virtual server running in AWS datacenters.
+  - It requires an AMI (Amazon Machine Image). It's the OS (Ubuntu, Amazon Linux, Windows Server, etc.) template.
+  - Instance type selection: the hardware size such as CPU, RAM, Storage
+  - Security Group: Firewall rules that controlls inbound/outbound traffic to the instance
+  - Key Pair: SSH or RDP keys to log into the instance
+  - ElasticIP: A static Public IP address that doesn't change on restart (for public facing services such as - web server)
+
+- Security Groups
+  - Security Groups are virtual firewalls. They control what traffic can reach instance.
+    | Rule Type | Direction | What it controls |
+    | ------- | ------- | ------- |
+    | Inbound | Internet -> instance | Who can coneect to you |
+    | Outbound | instance -> internet | What instance can reach |
+
+  For a web server:
+
+  ```
+  Inbound rules:
+  - Port 22 (SSH) — from admin IP only
+  - Port 80 (HTTP) — from anywhere
+  - Port 443 (HTTPS) — from anywhere
+
+  Outbound rules:
+  - All traffic — allow (default)
+  ```
+
+  - Port 22 should be only from admin's machine IP rather than the entire internet. It creates a major security risk. Hackers uses bots to scan for open SSH ports constantly.
+  - SSH username for AWS
+    | AMI | Username |
+    |---|---|
+    | Ubuntu | ubuntu |
+    | Amazon Linux 2/2023 | ec2-user |
+    | RHEL | ec2-user |
+    | Debian | admin |
+    | CentOS | centos |
+
+- Key Pair
+  - For SSH, AWS provides `.pem` file for SSH Key. But before we can connect AWS requires the `.pem` file to be of `chmod 600` strictly.
+
+**What I Built**
+
+- Launching EC2 instance
+
+```
+1. AWS Console → EC2 → Launch Instance
+2. Name: t3-web-server
+3. AMI: Ubuntu Server 24.04 LTS
+4. Instance type: t3.micro
+5. Key pair → Create new key pair
+   - Name: key-name
+   - Type: RSA
+   - Format: .pem
+   - Downloaded and saved
+6. Network settings:
+   - Created security group
+   - Allowed SSH from: My IP
+   - Allow HTTP from: Anywhere
+7. Storage: 8GB gp2
+8. Launch instance
+```
+
+- SSH into the server
+
+```
+ssh -i key.pem ubuntu@<ec2-public-ip>
+```
+
+- Exploring the Server:
+
+```
+whoami
+pwd
+uname -a          # Linux kernel info
+df -h             # disk space
+free -h           # memory
+curl ifconfig.me  # public IP — matches EC2 console
+```
+
+![EC2Stats](EC2Stats.png)
+
+- Install and Start a Web Server
+  - Installed nginx web server
+
+  ```
+  # Install nginx web server
+  sudo apt install nginx -y
+
+  # Check if it's running
+  sudo systemctl status nginx
+
+  # If not running, start with
+  sudo systemctl start nginx
+  ```
+
+  ![nginx](nginx%20welcome.png)
+
+**Challenges**
+
+- t2.micro not showing free tier eligible in ca-central-1
+  - Used t3.micro instead — free tier eligible and slightly better
+- Instance storage warning on launch
+  - Informational only — not an error
+  - t3.micro uses EBS storage which is what we want
+
+**Tomorrow**
+
+- S3 deep dive — buckets, objects, policies
+- Host a static website on S3
+- Learn S3 bucket policies and ACLs
+- Connect a custom domain via Route 53
