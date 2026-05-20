@@ -547,12 +547,12 @@ print(f"{service["name"]} is stopped in {service["region"]} \n")
 ## Week 2: AWS
 
 - [x] Day 1: AWS Account Setup + IAM
-- [x] Day 2: Linux refresh
-- [x] Day 3: Networking
-- [x] Day 4: HTTP/APIs
-- [x] Day 5: Git/GitHub
-- [x] Day 6: Python
-- [x] Day 7: Review
+- [] Day 2:
+- [] Day 3:
+- [] Day 4:
+- [] Day 5:
+- [] Day 6:
+- [] Day 7:
 
 ### Day 1 - May 19, 2026
 
@@ -567,7 +567,7 @@ print(f"{service["name"]} is stopped in {service["region"]} \n")
 
 - IAM Users vs Roles
 
-  | -----       | IAM Users                         | IAM Role                                    |
+  |             | IAM Users                         | IAM Role                                    |
   | ----------- | --------------------------------- | ------------------------------------------- |
   | Who uses it | A person                          | A service or application                    |
   | Credentials | Username + password + access keys | Temporary credentials assumed automatically |
@@ -575,8 +575,6 @@ print(f"{service["name"]} is stopped in {service["region"]} \n")
 
 - IAM Policies
   - These are JSON files containing instructions to either allow or deny access to an action such as ec2:StartInstance to a resource such as instance, bucket, etc.
-  -
-
   ```
   {
     "Version": "2012-10-17",
@@ -619,17 +617,17 @@ print(f"{service["name"]} is stopped in {service["region"]} \n")
   aws configure
   ```
 
-  - Testing CLI is working or not:
+- Testing CLI is working or not:
 
-    ```
-    # Listing IAM users — if this returns data, CLI is configured correctly
-    aws iam list-users
+  ```
+  # Listing IAM users — if this returns data, CLI is configured correctly
+  aws iam list-users
 
-    # Checking who I am
-    aws sts get-caller-identity
-    ```
+  # Checking who I am
+  aws sts get-caller-identity
+  ```
 
-    - JSON output of both commands confirmed the successful installation and configuration of AWS CLI
+  - JSON output of both commands confirmed the successful installation and configuration of AWS CLI
 
 **Challenges:**
 
