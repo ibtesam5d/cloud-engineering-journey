@@ -547,7 +547,7 @@ print(f"{service["name"]} is stopped in {service["region"]} \n")
 ## Week 2: AWS
 
 - [x] Day 1: AWS Account Setup + IAM
-- [] Day 2:
+- [x] Day 2: EC2
 - [] Day 3:
 - [] Day 4:
 - [] Day 5:
@@ -656,10 +656,11 @@ print(f"{service["name"]} is stopped in {service["region"]} \n")
 
 - Security Groups
   - Security Groups are virtual firewalls. They control what traffic can reach instance.
-    | Rule Type | Direction | What it controls |
-    | ------- | ------- | ------- |
-    | Inbound | Internet -> instance | Who can coneect to you |
-    | Outbound | instance -> internet | What instance can reach |
+
+    | Rule Type | Direction            | What it controls        |
+    | --------- | -------------------- | ----------------------- |
+    | Inbound   | Internet -> instance | Who can coneect to you  |
+    | Outbound  | instance -> internet | What instance can reach |
 
   For a web server:
 
@@ -675,13 +676,14 @@ print(f"{service["name"]} is stopped in {service["region"]} \n")
 
   - Port 22 should be only from admin's machine IP rather than the entire internet. It creates a major security risk. Hackers uses bots to scan for open SSH ports constantly.
   - SSH username for AWS
-    | AMI | Username |
-    |---|---|
-    | Ubuntu | ubuntu |
+
+    | AMI                 | Username |
+    | ------------------- | -------- |
+    | Ubuntu              | ubuntu   |
     | Amazon Linux 2/2023 | ec2-user |
-    | RHEL | ec2-user |
-    | Debian | admin |
-    | CentOS | centos |
+    | RHEL                | ec2-user |
+    | Debian              | admin    |
+    | CentOS              | centos   |
 
 - Key Pair
   - For SSH, AWS provides `.pem` file for SSH Key. But before we can connect AWS requires the `.pem` file to be of `chmod 600` strictly.
